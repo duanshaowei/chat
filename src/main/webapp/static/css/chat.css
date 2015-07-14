@@ -1,0 +1,199 @@
+/*私信css*/
+#msg-date{ position:fixed;z-index:888; right:0px; bottom:100px;}
+#msg-date a{ display:inline-block; width:200px; height:50px; line-height:50px; background:#fff;}
+#msg-date a p{ text-align:center;}
+#msg-date a p span.mailbox{ display:inline-block; width:26px; height:18px;background-position:-165px -136px;text-indent:-9999px; vertical-align:middle; margin-right:10px;}
+#msg-date a p span.orange{ color:#d09a5b;}
+#msg-date a p span.red{ color:red;}
+
+#msg-panel{border:1px solid #d8d8d8;box-shadow: 0 0 6px #999; width:530px; margin:0 auto;}
+.msg-title{ height:20px; line-height:20px; background:#f1f3f7; width:480px; padding:20px;}
+.msg-bottom{ height:45px; background:#f1f3f7; width:480px; padding:20px;}
+#msg-panel input.msg-input{ width:360px; height:32px; line-height:20px; padding:2px 5px; }
+.msgBtn{ width:200px; height:30px; line-height:30px; text-align:center; color:#FFF; border:1px solid #d8d8d8; background:#333;}
+
+
+.chat-thread {
+  margin: 0px auto 0 auto;
+  padding:20px;
+  list-style: none;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background:#fff;
+}
+
+.chat-thread li {
+  position: relative;
+  clear: both;
+  display: inline-block;
+  padding: 16px 40px 16px 20px;
+  margin: 0 0 40px 0;
+  font: 16px/20px 'Noto Sans', sans-serif;
+  border-radius: 10px;
+  background-color: rgba(166, 194, 222, 0.2);
+}
+.chat-thread li p{ position:absolute; bottom:-20px; color:#333; font-size:12px;}
+
+
+/* Chat - Avatar */
+.chat-thread li:before {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  content: '';
+}
+
+/* Chat - Speech Bubble Arrow */
+.chat-thread li:after {
+  position: absolute;
+  top: 15px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 15px solid  rgba(166, 194, 222, 0.2);
+}
+
+.chat-thread li:nth-child(odd) {
+  animation: show-chat-odd 0.15s 1 ease-in;
+  -moz-animation: show-chat-odd 0.15s 1 ease-in;
+  -webkit-animation: show-chat-odd 0.15s 1 ease-in;
+  float: right;
+  margin-right: 80px;
+  color: #0AD5C1;
+}
+
+.chat-thread li:nth-child(odd):before {
+  right: -80px;
+  background-image:url(../images/img/rightperson.jpg);
+}
+
+.chat-thread li:nth-child(odd):after {
+  border-right: 15px solid transparent;
+  right: -15px;
+}
+
+.chat-thread li:nth-child(even) {
+  animation: show-chat-even 0.15s 1 ease-in;
+  -moz-animation: show-chat-even 0.15s 1 ease-in;
+  -webkit-animation: show-chat-even 0.15s 1 ease-in;
+  float: left;
+  margin-left: 80px;
+  color: #595757;
+}
+
+.chat-thread li:nth-child(even):before {
+  left: -80px;
+  background-image: url(../images/img/leftperson.jpg);
+}
+
+.chat-thread li:nth-child(even):after {
+  border-left: 15px solid transparent;
+  left: -15px;
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 18px;
+}
+
+.chat-window-message {
+  width: 100%;
+  height: 48px;
+  font: 32px/48px 'Noto Sans', sans-serif;
+  background: none;
+  color: #0AD5C1;
+  border: 0;
+  border-bottom: 1px solid  rgba(166, 194, 222, 0.2);
+  outline: none;
+}
+
+/* Small screens */
+@media all and (max-width: 767px) {
+  .chat-thread {
+    width: 90%;
+    height: 260px;
+  }
+
+  .chat-window {
+    left: 5%;
+    width: 90%;
+  }
+}
+/* Medium and large screens */
+@media all and (min-width: 768px) {
+  .chat-thread {
+    width: 480px;
+    height: 320px;
+  }
+
+  .chat-window {
+    left: 25%;
+    width: 50%;
+  }
+}
+@keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+@-moz-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+@-webkit-keyframes show-chat-even {
+  0% {
+    margin-left: -480px;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+@keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+
+  100% {
+    margin-right: 0;
+  }
+}
+@-moz-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+
+  100% {
+    margin-right: 0;
+  }
+}
+@-webkit-keyframes show-chat-odd {
+  0% {
+    margin-right: -480px;
+  }
+
+  100% {
+    margin-right: 0;
+  }
+}
+.credits{
+  text-align:center;
+  margin-top:35px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: 'Noto Sans', sans-serif;
+}
+.credits a{
+  text-decoration:none;
+  color: rgba(255, 255, 255, 0.35);
+}
