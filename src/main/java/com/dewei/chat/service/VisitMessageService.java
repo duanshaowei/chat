@@ -23,12 +23,6 @@ public class VisitMessageService {
 	  }
 	  
 	  public boolean removeAsyncResult(Visitor visitor){
-		 if(visitor.getRequestId().equals("4100"))
-			try {
-				Thread.sleep(5000l);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		 Visitor v = queueService.removeAsyncResult(visitor.getRequestId());
 		 return v !=null ? true : false;
 	  }

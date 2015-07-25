@@ -8,7 +8,7 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
     <!-- 自动扫描且只扫描@Controller -->
-	<context:component-scan base-package="com.snowstore.juno.controller"
+	<context:component-scan base-package="com.dewei.chat.controller"
 		use-default-filters="false">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
@@ -17,13 +17,8 @@
 	</context:component-scan>
 	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
 	<mvc:annotation-driven>
-		<mvc:async-support task-executor="threadPoolTaskExecutor" default-timeout="30000">
-			<!-- <mvc:callable-interceptors>
-				<bean class="com.snowstore.juno.web.intercepator.CallableProcessInterceptors" />
-			</mvc:callable-interceptors>
-			<mvc:deferred-result-interceptors>
-			    <bean class="com.snowstore.juno.web.intercepator.DeferredProcessInterceptors"/>
-			</mvc:deferred-result-interceptors> -->
+		<mvc:async-support task-executor="pushMessageExecutor" default-timeout="30000">
+			
 		</mvc:async-support>
 		
 		<mvc:message-converters register-defaults="true">
@@ -35,7 +30,7 @@
 			<bean
 				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="objectMapper">
-					<bean class="com.snowstore.juno.utilities.JpaObjectMapper">
+					<bean class="com.dewei.chat.utilities.JpaObjectMapper">
 					</bean>
 				</property>
 				<property name="prettyPrint" value="true" />

@@ -22,7 +22,7 @@
 	<description>Spring公共配置 </description>
 	
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
-    <context:component-scan base-package="com.snowstore.juno">
+    <context:component-scan base-package="com.dewei.chat">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 		<context:exclude-filter type="annotation"
@@ -30,8 +30,8 @@
 			
 	</context:component-scan> 
 	
-	<bean id="threadPoolTaskExecutor" class="com.snowstore.juno.thread.PushMessageExecutor" init-method="start">
-        <!--  核心线程数，默认为1 -->
+	<bean id="pushMessageExecutor" class="com.dewei.chat.thread.PushMessageExecutor" init-method="start">
+         <!-- 核心线程数，默认为1 -->
         <property name="corePoolSize" value="10" />
         <!-- 最大线程数，默认为Integer.MAX_VALUE -->
         <property name="maxPoolSize" value="50" />
@@ -43,7 +43,7 @@
         <property name="threadNamePrefix" value="mesage-" />
          <!-- 线程池对拒绝任务（无线程可用）的处理策略 -->
         <property name="rejectedExecutionHandler">
-            <!--  CallerRunsPolicy:主线程直接执行该任务 -->
+             <!-- CallerRunsPolicy:主线程直接执行该任务 -->
             <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
         </property>
         
@@ -53,4 +53,8 @@
            </list>
         </property>
    </bean>
+   
+   	<util:list id="subscriber" list-class="java.util.ArrayList">
+	    <ref bean="chatSubscriberMes"/>
+	</util:list>
 </beans>
