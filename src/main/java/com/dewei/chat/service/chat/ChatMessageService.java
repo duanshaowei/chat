@@ -26,21 +26,6 @@ public class ChatMessageService {
 	  public void subsProcess (Visitor visitor,
 				NetMessage message) {
 		    NetChatMessage chat = (NetChatMessage) message.getMessageBody();
-		    
-/*			MessageRelation messageRelation = this
-					.findMessageRelationByMessageIdAndReceiverId(
-							new Long(message.getNetMessageID()),
-							new Long(visitor.getRequestId()));
-			messageRelation.setReadStatus(MsPushConstants.MESSAGE_READ_TAG);
-			this.saveOrUpdate(messageRelation);
-
-			Message dissociate = messageRelation.getMessage();
-			chat.setSenderName(dissociate.getSenderName());
-			chat.setSenderID(dissociate.getSender().getId().toString());
-			chat.setReceiverID(messageRelation.getReceiver().getId().toString());
-			chat.setReceiverName(messageRelation.getReceiver().getName());
-			chat.setSenderimgMogid(dissociate.getSender().getImgMogid());*/
-			
 			MessageQueueService.pushMes(visitor,message, chat);
 	  }
 	  
